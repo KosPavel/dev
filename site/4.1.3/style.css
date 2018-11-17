@@ -1,0 +1,4 @@
+p a { color: red; }
+.red { color: red; }
+p, a, div, ul, li { color: black; }
+div > ul { color: red; }

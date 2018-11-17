@@ -1,0 +1,13 @@
+html { box-sizing: content-box; }
+.background { position: absolute;
+	          height: 100%;
+	          width: 100%;
+              background-color: #00a4ffab;
+              top: 0px;
+              left: 0px;
+              }
+.container { position: absolute;
+             margin: 19% 56% 20% 47%;
+             height: 180px;
+             width: 180px;
+             background-color: white;}
