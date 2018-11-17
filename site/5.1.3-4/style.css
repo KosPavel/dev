@@ -1,0 +1,19 @@
+* {box-sizing: border-box;}
+.sss {height: 180px;
+     width: 180px;
+     margin: 60px 20px;
+     padding: 20px;
+     border: 3px solid green;
+     background-color: black;
+     border-radius: 50%;
+    }
+
+div.sss {height: 40px;
+     width: 40px;
+     overflow: hidden;
+     border: 3px dashed;
+   }
+
+.first {display: name}
+.second {display: block}
+.third {visibility: hidden}
