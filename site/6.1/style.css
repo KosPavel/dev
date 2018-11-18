@@ -1,0 +1,9 @@
+div {color: orange; }
+.left {float: left;
+       width: 50%;
+       background-color: black}
+.right {float: left;
+        width: 50%;
+        background-color: blue}
+.third {clear: both;
+        color: red}
