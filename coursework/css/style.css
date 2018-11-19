@@ -1,6 +1,7 @@
 * {
 	margin: 0px;
 	color: white;
+	font-family: "Open Sans";
 }
 
 .first {
@@ -9,6 +10,23 @@
 	min-height: 500px;
 	background-repeat: no-repeat;
 	background-size: cover;
+	float: left;
+}
+
+.logo {
+	margin: 10px 10px 0px 10px;
+	text-transform: uppercase;
+}
+
+.logo div {
+	float:left;
+	padding: 2px 2px 2px 2px;
+	margin-right: 5px;
+	color: black;
+	background-color: white;
+}
+
+.logo span {
 	float: left;
 }
 
@@ -21,7 +39,8 @@
 
 .first p {
 	margin: 0px 50px 40px 50px;
-	text-decoration: uppercase;
+	font-size: 12px;
+	text-transform: uppercase;
 }
 
 .image-block {
