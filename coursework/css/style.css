@@ -6,16 +6,29 @@
 
 .first {
 	background: url("../images/banner.jpg");
-	background-color: rgba(0, 0, 0, 0.5);
 	min-height: 500px;
 	background-repeat: no-repeat;
 	background-size: cover;
 	float: left;
+	text-transform: uppercase;
+	width: 100%;
+}
+
+.fade-banner {
+	background: rgba(6, 3, 43, 0.6);
+	min-height: 500px;
+	float: left;
+	width: 100%;
+}
+
+.fade-banner:after {
+	content: "";
+	display: block;
+	clear: both;
 }
 
 .logo {
 	margin: 10px 10px 0px 10px;
-	text-transform: uppercase;
 }
 
 .logo div {
@@ -30,17 +43,39 @@
 	float: left;
 }
 
+menu {
+	  padding-right: 10px;
+	  float: right;
+}
+
+menu a {
+	text-decoration: none;
+	clear: both;
+}
+
 .first h1 {
 	font-size: 30px;
 	border-bottom: 1px solid;
 	padding: 10% 0px 40px 0px;
 	margin: 0px 50px 40px 50px;
+	text-transform: none;
 }
 
 .first p {
 	margin: 0px 50px 40px 50px;
 	font-size: 12px;
 	text-transform: uppercase;
+	width: 40%;
+	float: left;
+}
+
+.button {
+	position: absolute;
+	font-size: 15px;
+	text-decoration: none;
+	text-transform: uppercase;
+	border: 1px solid;
+	padding: 5px;
 }
 
 .image-block {
@@ -164,4 +199,40 @@
 
 .fade-img-6:hover {
 	background: rgba(38, 240, 82, 0.0)
+}
+
+.third {
+	background: rgba(47, 56, 91, 1);
+	min-height: 260px;
+	float: left;
+	width: 100%;
+}
+
+.third h1 {
+    font-size: 30px;
+	border-bottom: 1px solid;
+	padding: 10% 0px 40px 0px;
+	margin: 0px 50px 40px 50px;
+	text-transform: none;
+}
+
+.third h1 {
+	font-size: 30px;
+	border-bottom: 1px solid;
+	padding: 30px 0px 40px 0px;
+	margin: 0px 50px 40px 50px;
+	text-transform: none;
+}
+
+.third p {
+	margin: 0px 30% 10px 50px;
+	font-size: 12px;
+	text-transform: uppercase;
+	width: 80%;
+}
+
+.third p:after {
+	content: "";
+	display: block;
+	clear: both;
 }
