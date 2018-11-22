@@ -1,0 +1,103 @@
+.row-1 {
+	height: 8,33%;
+	float: left;
+}
+.row-2 {
+	height: 16,66%;
+	float: left;
+}
+.row-3 {
+	height: 25%;
+	float: left;
+}
+.row-4 {
+	height: 33,33%;
+	float: left;
+}
+.row-5 {
+	height: 41,66%;
+	float: left;
+}
+.row-6 {
+	height: 50%;
+	float: left;
+}
+.row-7 {
+	height: 58,33%;
+	float: left;
+}
+.row-8 {
+	height: 66,66%;
+	float: left;
+}
+.row-9 {
+	height: 75%;
+	float: left;
+}
+.row-10 {
+	height: 83,33%;
+	float: left;
+}
+.row-11 {
+	height: 91,66%;
+	float: left;
+}
+.row-12 {
+	height: 100%;
+	float: left;
+}
+
+.col-1 {
+	width: 8,33%;
+	float: left;
+}
+.col-2 {
+	width: 16,66%;
+	float: left;
+}
+.col-3 {
+	width: 25%;
+	float: left;
+}
+.col-4 {
+	width: 33,33%;
+	float: left;
+}
+.col-5 {
+	width: 41,66%;
+	float: left;
+}
+.col-6 {
+	width: 50%;
+	float: left;
+}
+.col-7 {
+	width: 58,33%;
+	float: left;
+}
+.col-8 {
+	width: 66,66%;
+	float: left;
+}
+.col-9 {
+	width: 75%;
+	float: left;
+}
+.col-10 {
+	width: 83,33%;
+	float: left;
+}
+.col-11 {
+	width: 91,66%;
+	float: left;
+}
+.col-12 {
+	width: 100%;
+	float: left;
+}
+
+[class^="row"]:after, {
+	content: "";
+	clear: both;
+	display: block;
+}
