@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+}
+
+.col-1 {
+    width: 8.33%;
+    padding: 0px 10px;
+    float: left;
+}
+
+.col-2 {
+    width: 16.66%;
+    padding: 0px 10px;
+    float: left;
+}
+
+.col-3 {
+    width: 25%;
+    padding: 0px 10px;
+    float: left;
+}
+
+.col-4 {
+    width: 33.33%;
+    padding: 0px 10px;
+    float: left;
+}
+
+.col-5 {
+    width: 41.66%;
+    padding: 0px 10px;
+    float: left;
+}
+
+.col-6 {
+    width: 50%;
+    padding: 0px 10px;
+    float: left;
+}
+
+/*ниже - клирфикс для текста после колонок, чтобы не заезжал*/
+.row:after {
+	content: "";
+	clear: both;
+	display: block;
+}
