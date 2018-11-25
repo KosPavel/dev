@@ -1,241 +1,252 @@
 * {
-	margin: 0px;
-	color: white;
+	box-sizing: border-box;
 	font-family: "Open Sans";
+	color: white;
 }
 
-.first {
+body {
+	margin: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+/*Первая секция*/
+
+section.first {
 	background: url("../images/banner.jpg");
-	min-height: 500px;
 	background-repeat: no-repeat;
 	background-size: cover;
-	float: left;
 	text-transform: uppercase;
-	width: 100%;
-}
-
-.fade-banner {
-	background: rgba(6, 3, 43, 0.6);
 	min-height: 500px;
-	float: left;
-	width: 100%;
 }
 
-.fade-banner:after {
-	content: "";
-	display: block;
-	clear: both;
+.first-fade {
+	background-color: rgba(36, 41, 67, 0.8);
+	min-height: 500px;
 }
 
-.logo {
-	margin: 10px 10px 0px 10px;
+.first a {
+	font-weight: bold;
+	text-decoration: none;
 }
 
-.logo div {
-	float:left;
-	padding: 2px 2px 2px 2px;
-	margin-right: 5px;
+.flex-container {
+	padding: 2%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.flex-container div {
+	font-weight: bold;
+	display: inline-block;
+}
+
+.white-background {
 	color: black;
 	background-color: white;
-}
-
-.logo span {
-	float: left;
-}
-
-menu {
-	  padding-right: 10px;
-	  float: right;
-}
-
-menu a {
-	text-decoration: none;
-	clear: both;
+	padding: 2px;
 }
 
 .first h1 {
+	margin: 5% 5% 30px 10%;
+	padding: 0% 0% 30px 0%;
 	font-size: 30px;
-	border-bottom: 1px solid;
-	padding: 10% 0px 40px 0px;
-	margin: 0px 50px 40px 50px;
 	text-transform: none;
+	border-bottom: 1px solid;
 }
 
 .first p {
-	margin: 0px 50px 40px 50px;
-	font-size: 12px;
-	text-transform: uppercase;
+	margin: 0% 2% 30px 10%;
 	width: 40%;
 	float: left;
 }
 
-.button {
-	position: absolute;
-	font-size: 15px;
-	text-decoration: none;
-	text-transform: uppercase;
-	border: 1px solid;
+.btn-get-started {
 	padding: 5px;
-}
-
-.image-block {
-	background: url("../images/pic01.jpg");
-	min-height: 260px;
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-
-.image-block h2 {
-	border-bottom: 1px solid;
-	max-width: 200px;
-	padding-bottom: 10px;
-}
-
-.image-block p {
+	display: inline-block;
+	border: 1px solid;
 	text-transform: uppercase;
+	text-decoration: none;
+	font-weight: normal;
 }
 
-.row:after {
+/*Вторая секция*/
+
+section.second{
+	width: 100%;
+}
+
+section.second:after {
 	content: "";
 	display: block;
 	clear: both;
 }
 
-.column60 {
+.row {
+	width: 100%;
+	float: left;
+}
+
+.row h2 {
+	display: inline-block;
+	margin: 50px 0px 30px 10%;
+	padding: 0px 10px 30px 0px;
+	border-bottom: 1px solid;
+}
+
+.row p {
+	margin: 0px 0px 130px 10%;
+}
+
+.column-40 {
+	float: left;
+	width: 40%;
+}
+
+.column-60 {
 	float: left;
 	width: 60%;
 }
 
-.column40 {
-	float: left;
-	width: 40%;
-}
-
 .img-1 {
-	background-image: url("../images/pic01.jpg");
+	background: url("../images/pic01.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .img-2 {
-	background-image: url("../images/pic02.jpg");
+	background: url("../images/pic02.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .img-3 {
-	background-image: url("../images/pic03.jpg");
+	background: url("../images/pic03.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .img-4 {
-	background-image: url("../images/pic04.jpg");
+	background: url("../images/pic04.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .img-5 {
-	background-image: url("../images/pic05.jpg");
+	background: url("../images/pic05.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .img-6 {
-	background-image: url("../images/pic06.jpg");
+	background: url("../images/pic06.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
-.fade-img-1 {
-	background: rgba(15, 242, 231, 0.5);
-	padding: 30px 70px;
-	height: 200px;
-	transition: background 1s ease 0s;
+.fade-1 {
+	background-color: rgba(111, 195, 223, 0.85);
+	height: 100%;
+	transition: background-color 2s;
 }
 
-.fade-img-1:hover {
-	background: rgba(15, 242, 231, 0.0)
+.fade-2 {
+	background-color: rgba(141, 130, 196, 0.85);
+	height: 100%;
+	transition: background-color 2s;
 }
 
-.fade-img-2 {
-	background: rgba(209, 77, 209, 0.5);
-	padding: 30px 70px;
-	height: 200px;
-	transition: background 1s ease 0s;
+.fade-3 {
+	background-color: rgba(236, 141, 129, 0.85);
+	height: 100%;
+	transition: background-color 2s;
 }
 
-.fade-img-2:hover {
-	background: rgba(209, 77, 209, 0.0)
+.fade-4 {
+	background-color: rgba(231, 183, 136, 0.85);
+	height: 100%;
+	transition: background-color 2s;
 }
 
-.fade-img-3 {
-	background: rgba(240, 116, 62, 0.5);
-	padding: 30px 70px;
-	height: 200px;
-	transition: background 1s ease 0s;
+.fade-5 {
+	background-color: rgba(142, 169, 232, 0.85);
+	height: 100%;
+	transition: background-color 2s;
 }
 
-.fade-img-3:hover {
-	background: rgba(240, 116, 62, 0.0)
+.fade-6 {
+	background-color: rgba(135, 197, 164, 0.85);
+	height: 100%;
+	transition: background-color 2s;
 }
 
-.fade-img-4 {
-	background: rgba(245, 180, 42, 0.5);
-	padding: 30px 70px;
-	height: 200px;
-	transition: background 1s ease 0s;
+.fade-1:hover {
+	background-color: rgba(111, 195, 223, 0.0);
 }
 
-.fade-img-4:hover {
-	background: rgba(245, 180, 42, 0.0)
+.fade-2:hover {
+	background-color: rgba(141, 130, 196, 0.0);
 }
 
-.fade-img-5 {
-	background: rgba(64, 184, 245, 0.5);
-	padding: 30px 70px;
-	height: 200px;
-	transition: background 1s ease 0s;
+.fade-3:hover {
+	background-color: rgba(236, 141, 129, 0.0);
 }
 
-.fade-img-5:hover {
-	background: rgba(64, 184, 245, 0.0)
+.fade-4:hover {
+	background-color: rgba(231, 183, 136, 0.0);
 }
 
-.fade-img-6 {
-	background: rgba(38, 240, 82, 0.5);
-	padding: 30px 70px;
-	height: 200px;
-	transition: background 1s ease 0s;
+.fade-5:hover {
+	background-color: rgba(142, 169, 232, 0.0);
 }
 
-.fade-img-6:hover {
-	background: rgba(38, 240, 82, 0.0)
+.fade-6:hover {
+	background-color: rgba(135, 197, 164, 0.0);
 }
 
-.third {
-	background: rgba(47, 56, 91, 1);
-	min-height: 260px;
-	float: left;
-	width: 100%;
-	padding: 50px 70px 50px 70px;
-	margin: 0px;
+/*Третья секция*/
+
+section.third {
+	background-color: rgba(42, 47, 74, 1.0);
+	padding: 50px 10%;
 }
 
-.third h1 {
-    display: inline-block;
-	font-size: 30px;
-	border-bottom: 1px solid;
-	padding: 30px 0px 20px 0px;
-	margin: 0px 0px 40px 0px;
+.third h2 {
+	display: inline-block;
+	padding: 0px 20px 23px 0px;
+	font-size: 25px;
 	text-transform: none;
+	border-bottom: 1px solid;
 }
 
 .third p {
-	margin: 0px 0px 10px 0px;
-	font-size: 12px;
-	text-transform: uppercase;
-	width: 80%;
+	font-size: 15px;
+	display: inline-block;
+	padding: 0px 20px 25px 0px;
 }
 
-.third p:after {
-	content: "";
-	display: block;
-	clear: both;
+/*Четвёртая секция*/
+
+section.fourth {
+	background-color: rgba(42, 47, 74, 1.0);
+	padding: 50px 10%;
 }
 
-/*.fourth {
+.fourth footer {
+	padding: 60px 0px 0px 0px;
+	display: inline-block;
+	width: 100%;
+}
 
-}*/
+footer a {
+	padding: 0px 15px 0px 0px;
+	text-decoration: none;
+}
 
-.send-message {
-	width: 72,55%;
+.icon-round {
+	background-color: white;
+	color: black;
+	padding: 10px;
+    border-radius: 50%;
+    width: auto;
 }
