@@ -232,7 +232,7 @@ section.third {
 /*Четвёртая секция*/
 
 section.fourth {
-	background-color: rgba(42, 47, 74, 1.0);
+	background-color: rgba(36, 41, 67, 1.0);
 	padding: 50px 10%;
 }
 
@@ -251,8 +251,28 @@ label {
 	float: left;
 }
 
-input, textarea {
+input {
 	width: 100%;
+	background-color: rgba(42, 47, 74, 1.0);
+	border: none;
+	min-height: 50px;
+}
+
+textarea {
+	width: 100%;
+	background-color: rgba(42, 47, 74, 1.0);
+	border: none;
+	min-height: 150px;
+}
+
+input:focus, textarea:focus {
+	outline: 2px solid rgb(155, 241, 255);
+}
+
+.contacts {
+	float: right;
+	width: 33%;
+	height: 75%;
 }
 
 /*Четвёртая секция - footer*/
@@ -274,4 +294,24 @@ footer a {
 	padding: 10px;
     border-radius: 50%;
     width: auto;
+}
+
+.credits {
+	font-size: 12px;
+	float: left;
+	margin: 7px 7px 7px 0px;
+	padding: 7px 7px 7px 0px;
+	color: rgba(244, 244, 255, 0.2);
+}
+
+.credits a {
+	border-bottom: 1px dashed;
+	color: rgba(244, 244, 255, 0.2);
+	padding: 0px;
+}
+
+/*FXs*/
+
+.turn-blue {
+
 }
