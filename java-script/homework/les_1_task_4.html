@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		var a = prompt('введите число [-999, 999]');
+		var answer;
+		if (a[0] === '-') {
+			answer = 'отрицательное ';
+			a = a.split('-')[1];
+		} else {
+			answer = 'положительное '
+		}
+        (a.length === 1) ? answer += 'однозначное число' : {};
+        (a.length === 2) ? answer += 'двузначное число' : {};
+        (a.length === 3) ? answer += 'трёхзначное число' : {};
+		(a === '0') ? answer = 'нулевое число' : {};
+		alert(answer);
+	</script>
+</body>
+</html>
