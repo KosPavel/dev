@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+    <script type="text/javascript">
+        var a = prompt('enter point "a" coordinates in "x y z" format').split(' ');
+        var b = prompt('enter point "b" coordinates in "x y z" format').split(' ');
+        var c = prompt('enter point "c" coordinates in "x y z" format').split(' ');
+        var ab = Math.sqrt((a[0]-b[0])**2 + (a[1]-b[1])**2 + (a[2]-b[2])**2);
+        var ac = Math.sqrt((a[0]-c[0])**2 + (a[1]-c[1])**2 + (a[2]-c[2])**2);
+        var bc = Math.sqrt((b[0]-c[0])**2 + (b[1]-c[1])**2 + (b[2]-c[2])**2);
+        cos_a = (ab**2 + ac**2 - bc**2) * Math.PI/180/(2 * ab * ac);
+        cos_b = (ab**2 + bc**2 - ac**2) * Math.PI/180/(2 * ab * bc);
+        cos_c = (bc**2 + ac**2 - ab**2) * Math.PI/180/(2 * bc * ac);
+        Math.acos(cos_a) === Math.PI/2 || Math.acos(cos_b) === Math.PI/2 || Math.acos(cos_c) === Math.PI/2 ? alert("this is right angle triangle!") : alert("this is not right angle triangle");
+    </script>
+</body>
+</html>

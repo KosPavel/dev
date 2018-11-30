@@ -213,6 +213,7 @@ section.second:after {
 section.third {
 	background-color: rgba(42, 47, 74, 1.0);
 	padding: 50px 10%;
+	min-height: 500px;
 }
 
 .third h2 {
@@ -273,6 +274,14 @@ input:focus, textarea:focus {
 	float: right;
 	width: 33%;
 	height: 75%;
+}
+
+.contacts i {
+	float: left;
+}
+
+.contacts div {
+	margin: 10px 10px 10px 40px;
 }
 
 /*Четвёртая секция - footer*/
