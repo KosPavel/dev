@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		var credit = prompt('Enter your credit, rub');
+		var perc = prompt('Enter percents per year') / 12 / 100;
+		var years = prompt('Enter amount of years');
+		var annuity = credit * perc * Math.pow((1 + perc), years * 12) / (Math.pow((1 + perc), years * 12) - 1);
+		var overpay = years * 12 * annuity - credit;
+		alert('Overpay = ' + overpay + ' rub');
+	</script>
+</body>
+</html>

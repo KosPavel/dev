@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+    <script type="text/javascript">
+        var plates = prompt('enter number of plates');
+        var wash = prompt('enter amount of dosya');
+        while (plates > 0 && wash > 0) {
+        	plates--;
+        	wash -= 0.5;
+        }
+        if (plates === 0 && wash === 0) {
+        	alert('Все тарелки вымыты, моющее средство закончилось');
+        } else {
+        	if (plates === 0) {
+        		alert('Все тарелки вымыты, осталось ' + wash + ' единиц моющего средства');
+        	} else {
+        		alert('Моющее средство закончилось, осталось ' + plates + ' тарелок');
+        	}
+        }
+    </script>
+</body>
+</html>

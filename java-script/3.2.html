@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+    <script type="text/javascript">
+        var mail = prompt('enter mail xxxx@xxxx.xxxx');
+        var reg = /[^@а-яА-Я]+@\w+\.[a-z]+/g;
+        if (reg.test(mail) === mail) 
+            alert('done!');
+        else
+        	alert(reg.test(mail));
+            alert(mail);
+            alert('No!');
+    </script>
+</body>
+</html>

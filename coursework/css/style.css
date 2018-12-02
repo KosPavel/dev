@@ -248,8 +248,11 @@ section.fourth {
 }
 
 label {
+	margin: 8px 8px 8px 0px;
+	font-size: 13px;
 	width: 100%;
 	float: left;
+	text-transform: uppercase;
 }
 
 input {
@@ -280,8 +283,19 @@ input:focus, textarea:focus {
 	float: left;
 }
 
+.contacts a {
+	text-decoration: none;
+	border-bottom: 1px dashed;
+	padding: 0px;
+	margin: 10px 10px 10px 40px;
+}
+
 .contacts div {
 	margin: 10px 10px 10px 40px;
+}
+
+.contacts-detailed {
+	font-size: 13px;
 }
 
 /*Четвёртая секция - footer*/
@@ -321,6 +335,26 @@ footer a {
 
 /*FXs*/
 
-.turn-blue {
+.icon-turn-blue {
+	transition: background-color 0.25s ease;
+}
 
+.icon-turn-blue:hover {
+	background-color: rgba(111, 195, 223, 0.85);
+}
+
+.btn-turn-blue {
+	transition: color 0.25s ease;
+}
+
+.btn-turn-blue:hover {
+	color: rgba(111, 195, 223, 0.85);
+}
+
+.link-turn-blue {
+	transition: color 0.25s ease;
+}
+
+.link-turn-blue:hover {
+	color: rgba(111, 195, 223, 0.85);
 }

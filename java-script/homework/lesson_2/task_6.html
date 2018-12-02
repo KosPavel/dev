@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+    <script type="text/javascript">
+        var year = prompt('Enter year');
+        if (year % 4 === 0) {
+            if (year % 100 == 0) {
+            	if (year % 400 === 0) {
+            		alert('Високосный!');
+            	} else {
+            		alert('Не високосный!');
+            	}
+            }
+        } else {
+        	alert('Не високосный!');
+        }
+    </script>
+</body>
+</html>

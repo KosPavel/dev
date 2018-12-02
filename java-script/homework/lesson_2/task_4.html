@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+    <script type="text/javascript">
+        var length = prompt('Enter units and lenth in "x y" format. Units:\n1 - dm\n2 - km\n3 - m\n4 - mm\n5 - sm').split(' ');
+        var length_m;
+        switch (length[0]) {
+        	case '1' : length_m = length[1] / 10;
+        	break;
+        	case '2' : length_m = length[1] * 1000;
+        	break;
+        	case '3' : length_m = length[1];
+        	break;
+        	case '4' : length_m = length[1] / 1000;
+        	break;
+        	case '5' : length_m = length[1] / 100;
+        }
+        alert('length = ' + length_m + ' m');
+    </script>
+</body>
+</html>

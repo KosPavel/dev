@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+    <script type="text/javascript">
+        var input = prompt('Enter sentence').toLowerCase();
+        var sentence = ''
+        i = 0;
+        while (i < input.length) {
+        	if (input[i] !== ' ') {
+        		sentence += input[i];
+        		i++;
+        	} else {
+        		i++;
+        	}
+        }
+        var reversed = '';
+        var i = sentence.length - 1;
+        while (i >= 0) {
+        	reversed += sentence[i];
+        	i--;
+        }
+        console.log(sentence);
+        console.log(reversed);
+        sentence === reversed ? alert("it's polyndrome!") : alert("it's not polyndrome");
+    </script>
+</body>
+</html>
