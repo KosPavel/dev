@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+    <script type="text/javascript">
+        var pass = prompt("Enter your password");
+        var check_length = /[a-zA-Z0-9_!#\$%]{9,}/ig; /*готово*/
+        var check_eng_big = /.*[A-Z]+/ig;
+        var check_eng_small = /.*[a-z]+/ig;
+        var check_num = /\d.*\d.*\d/ig; /*готово*/
+        var check_sym = /(!|%|#|\$)/ig; /*готово*/
+        check_length.test(pass) && (check_eng_big.test(pass) || check_eng_small.test(pass)) && check_num.test(pass) && check_sym.test(pass) ? alert("Pass is correct") : alert("incorrect password");
+    </script>
+</body>
+</html>

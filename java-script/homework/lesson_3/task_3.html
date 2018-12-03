@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+    <script type="text/javascript">
+        var string = prompt("Enter string of text");
+        var symbol = prompt("Enter symbol need to be doubled");
+        var reg = new RegExp(symbol, "ig");
+        var answer = string.replace(reg, symbol + symbol);
+        alert("answer is " + answer);
+    </script>
+</body>
+</html>

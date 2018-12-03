@@ -6,17 +6,7 @@
 <body>
     <script type="text/javascript">
         var year = prompt('Enter year');
-        if (year % 4 === 0) {
-            if (year % 100 == 0) {
-            	if (year % 400 === 0) {
-            		alert('Високосный!');
-            	} else {
-            		alert('Не високосный!');
-            	}
-            }
-        } else {
-        	alert('Не високосный!');
-        }
+        ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) ? alert("Год високосный!") : alert("Год не високосный");
     </script>
 </body>
 </html>
