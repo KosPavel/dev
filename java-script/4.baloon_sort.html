@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+    <script type="text/javascript">
+    	var arr = [2, 3, 7, 13, 5, 0, 20];
+        var n = arr.length;
+        console.log('start = ' + arr);
+    	for (let i = 0; i < n - 1; i++) { //кол-во всплытий
+            for (let j = 0; j < n - i - 1; j++) { //попарное сравнение
+                if (arr[j] > arr[j + 1]) {
+                    let temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+        }
+        console.log('fin = ' + arr);
+    </script>
+</body>
+</html>

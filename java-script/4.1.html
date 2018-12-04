@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+    <script type="text/javascript">
+    	var arr = [2, 3, 7, 13, 5, 0, 20];
+    	var min = arr[0], max = arr[0];
+    	var average = arr[0];
+    	for (let i = 1; i < arr.length; i++) {
+    		if (arr[i] < min)
+    			min = arr[i];
+    		if (arr[i] > max)
+    			max = arr[i];
+    		average += arr[i];
+    	}
+    	console.log('min = ' + min);
+    	console.log('max = ' + max);
+    	console.log('average = ' + average / arr.length);
+    	arr.shift();
+    	arr.pop();
+    	console.log('arr without first and last = ' + arr);
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+    <script type="text/javascript">
+        var str = prompt("enter string");
+    	var key = prompt("enter key, one symbol");
+        var encrypted = 0;
+        var res = ""
+        console.log('str = ' + str);
+        for (let i = 0; i < str.lenght; i++) {
+            encrypted = str[i].charCodeAt() ^ key.charCodeAt();
+            res += String.fromCharCode(encrypted);
+        }
+        console.log('encrypted = ' + res);
+    </script>
+</body>
+</html>
