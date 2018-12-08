@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+    <script type="text/javascript">
+        function createCounter() {
+            let i = 0;
+            return function () {
+                return ++i;
+            }
+        }
+
+        let counter1 = createCounter();
+        let counter2 = createCounter();
+        console.log(counter1());
+        console.log(counter1());
+        console.log(counter1());
+        console.log(counter2());
+        console.log(counter2());
+        console.log(counter2());
+        console.log(counter2());
+    </script>
+</body>
+</html>

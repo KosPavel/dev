@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+    <script type="text/javascript">
+        function pow (x, n) {
+        	if (n === 0) {
+        		return 1;
+        	} else if (n === 1) {
+        		return x;
+        	} else {
+                let result = x;
+        		for (let i = n; i > 1; i--) {
+                    result *= x;
+                }
+                return result;
+        	}
+        }
+    </script>
+</body>
+</html>

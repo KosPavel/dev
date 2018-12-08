@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+	    var area = [1, null, null, 
+	                null, null, 1,
+	                null, 1, null];
+	    var el = 0;
+	    document.write("<table>");
+	    for (var j = 0; j < 3; j++) {
+	    	document.write("<tr>");
+	    	for (var i = 0; i < 3; i++) {
+	    		document.write("<td>");
+	    		area[el] === null ? document.write("0") : document.write("X");
+	    		el++;
+	    		document.write("</td>");
+	    	}
+	    	document.write("</tr>");
+	    }
+	    document.write("</table>");
+	</script>
+</body>
+</html>
