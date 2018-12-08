@@ -269,7 +269,7 @@ textarea {
 	min-height: 150px;
 }
 
-input:focus, textarea:focus {
+form input:focus, textarea:focus {
 	outline: 2px solid rgb(155, 241, 255);
 }
 
@@ -358,3 +358,6 @@ footer a {
 .link-turn-blue:hover {
 	color: rgba(111, 195, 223, 0.85);
 }
+
+/* Adaptation */
+
