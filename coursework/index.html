@@ -1,32 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Hi, i'm Forty</title>
 	<meta charset="utf-8">
+	<meta name="description" content ="Main page of coursework project">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/grid.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800">
-<!-- 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
-    <link rel="stylesheet" type="text/css" href="fonts\fontawesome-free-5.5.0-web\css\all.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="javascript/menu.js"></script>
 </head>
 <body>
 	<section class="first">
 		<div class="first-fade">
 			<header class="flex-container">
-			    <a class="flex-block" href="">
-			    	<div class="white-background">forty</div>
-			    	<span>by html5 up</span>
+			    <a class="flex-block" href="index.html">
+			    	<div class="white-background icon-turn-blue">forty</div>
+			    	<span class="link-turn-blue">by html5 up</span>
 			    </a>
-			    <a class="flex-block" href="">
-			    	<div>menu</div>
-			    	<i class="fas fa-bars"></i>
+			    <a onclick="showMenu()" class="flex-block link-turn-blue">
+			    	<div class="link-turn-blue">menu</div>
+			    	<i class="fas fa-bars link-turn-blue"></i>
 			    </a>
+			    <div id="menu">
+			    	<i onclick="showMenu()" class="fas fa-times"></i>
+			    	<div class="menu-wrap">
+				    	<a class="link-turn-blue" href="index.html">
+				    		home
+				    	</a>
+				    	<a class="link-turn-blue" href="pages/second.html">
+				    		landing
+				    	</a>
+				    	<a class="link-turn-blue" href="pages/second.html">
+				    		generic
+				    	</a>
+				    	<a class="link-turn-blue" href="index.html">
+				    		elements
+				    	</a>
+				    	<a class="btn-get-started icon-turn-blue white-background" href="index.html">
+				    		get started
+				    	</a>
+				    	<a class="btn-get-started btn-turn-blue" href="index.html">
+				    		log in
+				    	</a>
+				    </div>
+			    </div>
 			</header>
 			<h1>Hi, my name is Forty</h1>
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 			</p>
 			<a href="">
-				<div class="btn-get-started btn-turn-blue">get started
+				<div class="btn-get-started btn-turn-blue" href="index.html">get started
 	                <i class="fas fa-arrow-right"></i>
 				</div>
 			</a>
@@ -88,30 +113,26 @@
 	</section>
 	<section class="fourth">
 		<div class="message-form">
-			<div class="row-grid">
-				<div class="col-6">
-					<form>
+			<form>
+				<div class="row-grid">
+					<div class="col-6">
 						<label for="input-name">name</label>
-						<input type="text" id="input-name">
-					</form>
-				</div>
-				<div class="col-6">
-					<form>
+						<input class="outline" type="text" id="input-name">
+					</div>
+					<div class="col-6">
 						<label for="input-email">email</label>
-						<input type="email" id="input-email">
-					</form>
+						<input class="outline" type="email" id="input-email">
+					</div>
 				</div>
-			</div>
-			<div class="row-grid">
-				<div class="col-12">
-					<form>
+				<div class="row-grid">
+					<div class="col-12">
 						<label for="input-message">message</label>
-						<textarea type="text" id="input-message"></textarea>
-					</form>
+						<textarea class="outline" type="text" id="input-message"></textarea>
+					</div>
 				</div>
-			</div>
-			<input class="btn-get-started white-background" type="submit" value="Send Message">
-			<input class="btn-get-started btn-turn-blue" type="reset" value="Clear">
+				<input class="btn-get-started white-background icon-turn-blue" type="submit" value="Send Message">
+				<input class="btn-get-started btn-turn-blue" type="reset" value="Clear">
+			</form>
 		</div>
 		<div class="contacts">
 			<div class="row">
