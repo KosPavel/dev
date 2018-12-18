@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+	</title>
+	<style type="text/css">
+		td {
+			height: 20px;
+			width: 20px;
+			border: 1px solid black;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<input id="calc_display" type="text" style="width: 100px; height: 20px;" disabled>
+		<table>
+			<tr>
+				<td>C</td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+				<td>/</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td>*</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td>0</td>
+				<td>.</td>
+				<td>=</td>
+				<td>+</td>
+			</tr>
+		</table>
+	</div>
+	<script>
+		function calc_handler(event){
+				if (event.target.tagName === 'td') {
+
+				if(this.innerText === "C"){
+					calc_display.value = "";
+				} else if (this.innerText === "="){
+					calc_display.value = eval(calc_display.value);
+				} else {
+					calc_display.value += this.innerText;
+				}
+			}
+	    }
+
+		container.onclick = calc_handler;
+	</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script>
+		function getAttr(object) {
+			for (i in object) {
+				console.log("This object has " + "\'" + i + "\'" + " attribute = " + object[i]);
+			}
+		}
+
+		student = {
+			name : 'Pasha',
+			years : 23,
+			university : 'ITMO',
+		}
+
+		getAttr(student);
+	</script>
+</body>
+</html>

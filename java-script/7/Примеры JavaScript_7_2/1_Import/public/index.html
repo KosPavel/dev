@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Import</title>
+</head>
+<body>
+	<script type="module">
+		import one from './num1.js';
+		console.log("Значение переменной из num1.js: " + one);
+		
+		import {onсe, twice} from './num2.js';
+		console.log("Значение переменных из num2.js: " + onсe + 
+			" " + twice);
+			
+		import {sayHi as say} from './num2.js';
+		say();
+
+		console.log('End of node http')
+	</script>
+</body>
+</html>

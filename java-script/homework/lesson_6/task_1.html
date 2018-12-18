@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script>
+		function getAttr(object) {
+			for (i in object) {
+				console.log("This object has " + "\'" + i + "\'" + " attribute = " + object[i]);
+			}
+		}
+
+		var student = {
+			name : 'Pasha',
+			secondName : 'Kostrygin',
+			years : 23,
+			interests : ['sex', 'drugs', "rock'n'roll"],
+			university : 'ITMO',
+			info : function(){
+				interests = '';
+				for (let i = 0; i < this.interests.length; i++) {
+					interests += this.interests[i] + " ";
+				}
+				console.log(`${this.name} ${this.secondName}, ${this.years} years old. interests: ${interests}. Studying at ${this.university}.`)
+		    }
+		}
+		student.info();
+	</script>
+</body>
+</html>

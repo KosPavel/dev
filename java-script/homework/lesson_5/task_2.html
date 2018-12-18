@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script>
+		var a = [1,2,3];
+		var b = [2,3,4];
+		var c = [];
+		for (let i = 0; i < a.length; i++) {
+			c.push(a[i]);
+		}
+		// for (let i = 1; i < b.length; i++) { //почему этот блок некорректно работает?
+		// 	if (!(b[i] in c)) {
+		// 		c.push(b[i]);
+		// 	}
+		// }
+		for (let i = 0; i < b.length; i++) {
+			let isUniq = true;
+			for (let j = 0; j < c.length; j++) {
+				if (b[i] === c[j]) {
+					isUniq = false;
+				}
+			}
+			if (isUniq === true) {
+				c.push(b[i]);
+			}
+		}
+		console.log(c);
+	</script>
+</body>
+</html>

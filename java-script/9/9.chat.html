@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+	</title>
+</head>
+<body>
+	<script></script>
+	<input id="text" type="text" style="width: 100px; height: 20px;">
+	<input id="btn" type="button" value="send"/>
+	<ul id="list"></ul>
+	<script>
+		btn.addEventListener("click", function(){
+			let msg = document.createElement("li");
+			msg.innerText = text.value;
+			list.appendChild(msg);
+			text.value = "";
+		}, false);
+	</script>
+</body>
+</html>

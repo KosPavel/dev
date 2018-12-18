@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script>
+		function fib(num) {
+			if (num === 1 || num === 2) {
+				return 1;
+			}
+			else {
+				let prev = 1; //предыдущее число
+				let answer = 2;
+				let temp;
+				for (i = 3; i < num; i++) {
+					temp = answer;
+					answer = answer + prev;
+					prev = temp;
+				}
+				console.log('answer is ' + answer);
+			}
+		}
+
+		fib(prompt('enter fib number'));
+	</script>
+</body>
+</html>

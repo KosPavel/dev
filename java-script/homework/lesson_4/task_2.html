@@ -5,16 +5,26 @@
 </head>
 <body>
 	<script type="text/javascript">
-	    var area = [1, null, null, 
-	                null, null, 1,
-	                null, 1, null];
+	    var area = [1, null, 0, 
+	                null, 1, null,
+	                null, null, null];
 	    var el = 0;
 	    document.write("<table>");
 	    for (var j = 0; j < 3; j++) {
 	    	document.write("<tr>");
 	    	for (var i = 0; i < 3; i++) {
 	    		document.write("<td>");
-	    		area[el] === null ? document.write("0") : document.write("X");
+	    		if (area[el] === 1) {
+	    			document.write("X");
+	    		}
+	    		else {
+	    			if (area[el] === 0) {
+	    				document.write("O");
+	    			}
+	    			else {
+	    				document.write(" ");
+	    			}
+	    		}
 	    		el++;
 	    		document.write("</td>");
 	    	}
