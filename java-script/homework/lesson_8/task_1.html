@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <span class="hh"></span>
+    <span>:</span>
+    <span class="mm"></span>
+    <span>:</span>
+    <span class="ss"></span>
+    <script>
+        let hh = document.getElementsByClassName("hh")[0];
+        let mm = document.getElementsByClassName("mm")[0];
+        let ss = document.getElementsByClassName("ss")[0];
+        showTime();
+        var reloadTime = setInterval(showTime, 1000);
+
+        function showTime() {
+            let date = new Date();
+            let h = date.getHours();
+            let m = date.getMinutes();
+            let s = date.getSeconds();
+            if (h.toString().length === 1) {
+                hh.innerHTML = "0" + h;
+            } else {
+                hh.innerHTML = h;
+            }
+
+            if (m.toString().length === 1) {
+                mm.innerHTML = "0" + m;
+            } else {
+                mm.innerHTML = m;
+            }
+
+            if (s.toString().length === 1) {
+                ss.innerHTML = "0" + s;
+            } else {
+                ss.innerHTML = s;
+            }
+
+            hh.style.color = "red";
+            mm.style.color = "blue";
+            ss.style.color = "green";
+        }
+
+        function randomInteger(min, max) {
+            var rand = min - 0.5 + Math.random() * (max - min + 1)
+            return rand;
+
+        }
+    </script>
+</body>
+</html>

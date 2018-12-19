@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <div class="red"></div>
+    <div class="yellow"></div>
+    <div class="green"></div>
+    <script>
+        let red = document.getElementsByClassName("red")[0];
+        red.style.border = "1px solid black";
+        red.style.borderRadius = "50%";
+        red.style.width = "50px";
+        red.style.height = "50px";
+
+        let yellow = document.getElementsByClassName("yellow")[0];
+        yellow.style.border = "1px solid black";
+        yellow.style.borderRadius = "50%";
+        yellow.style.width = "50px";
+        yellow.style.height = "50px";
+
+        let green = document.getElementsByClassName("green")[0];
+        green.style.border = "1px solid black";
+        green.style.borderRadius = "50%";
+        green.style.width = "50px";
+        green.style.height = "50px";
+
+        var switchColor = setInterval(showTime, 2000);
+        let positions = [
+            [true, false, false],
+            [true, true, false],
+            [false, false, true],
+        ];
+        let currentPos = 0;
+        showTime();
+
+        function showTime() {
+            let lights = [red, yellow, green];
+            for (let i = 0; i < positions[currentPos].length; i++) {
+                if (positions[currentPos][i] === true) {
+                    lights[i].style.backgroundColor = lights[i].className;
+                } else {
+                    lights[i].style.backgroundColor = "black";
+                }
+            }
+            currentPos++;
+            if (currentPos === positions.length) {
+                currentPos = 0;
+            }
+        }
+    </script>
+</body>
+</html>

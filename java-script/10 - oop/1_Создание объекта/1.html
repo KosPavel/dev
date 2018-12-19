@@ -1,0 +1,43 @@
+<html>
+<head>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script>
+		//Пример создания объекта
+		var storage = {
+			store:[],
+			set: function(key, value) {
+				this.store[key] = value;
+			},
+			get: function(key){
+				if(!key) return;
+				return this.store[key];
+			}
+		
+		}
+		
+		storage.set("Приветствие", "Привет мир");
+		alert(storage.get("Приветствие"));
+
+		function makeStorage(){ //это чертёж
+			let obj = {};
+			obj.store = {};
+			set: function(key, value) {
+				this.store[key] = value;
+			},
+			get: function(key){
+				if(!key) return;
+				return this.store[key];
+			}
+		
+		}
+
+		let store1 = makeStorage(); //создание объекта
+		let store2 = makeStorage();
+		store1.set("1":"2");
+		store1.get("1");
+	</script>
+</body>
+<footer></footer>
+</html>

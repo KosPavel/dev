@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		let arr = [1, 2, 3, -8, 640, -100, 169];
+		let arr2 = arr.filter(function(num, ind, arr){
+			return num > 0;
+		});
+		arr3 = arr2.map(function(num, ind, arr){
+			return num**0.5;
+		});
+		console.log(arr3);
+	</script>
+</body>
+</html>
