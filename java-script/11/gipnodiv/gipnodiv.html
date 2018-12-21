@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<div id="gipnoDiv"></div>		
+		<script src="script.js">
+		</script>
+		<script>
+			let iter2_r = new iteratorLib.Iterator2(0, 255);
+			let iter2_g = new iteratorLib.Iterator2(250, 15);
+			let iter2_b = new iteratorLib.Iterator2(5, 245);
+
+			gipnoDiv.style.height = "200px";
+			gipnoDiv.style.width = "200px";			
+			
+			setInterval(function(){
+				gipnoDiv.style.backgroundColor = 
+					`rgb(${iter2_r.step_cicle()}, ${iter2_g.step_cicle()}, ${iter2_b.step_cicle()})`;
+			}, 0);
+			
+		</script>
+	</body>
+</html>
