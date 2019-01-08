@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Изучаем Vue.js</title>
+<meta charset="utf-8" />
+</head>
+<body>
+<div id="app">
+    <button v-on:click="increase">+</button>
+    <button v-on:click="decrease">-</button>
+    <div>{{counter}}</div>
+</div>
+<script src=" https://cdn.jsdelivr.net/npm/vue">
+</script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {counter:0},
+        methods:{
+            increase: function(event){
+				console.log(event);
+                this.counter++;
+            },
+            decrease: function(event){
+                console.log(event);
+				if(this.counter>0) 
+                    this.counter--;
+            }
+        }
+    });
+</script>
+</body>
+</html>

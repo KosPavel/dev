@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Изучаем Vue.js</title>
+<meta charset="utf-8" />
+</head>
+<body>
+<div id="app">
+    <ul>
+      <li v-for="phone in phones">
+      <p>{{ phone }}</p>
+    </ul>
+    <button v-on:click="updateList">Обновить</button>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            newPhone: '',
+            phones: ['iPhone 7', 'Galaxy S8', 'Nokia N8', 'Xiaomi Mi6']
+        },
+        methods:{
+            updateList: function(){
+                this.phones = this.phones.slice(1,3);
+            }
+        }
+    });
+</script>
+</body>
+</html>

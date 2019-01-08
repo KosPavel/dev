@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Изучаем Vue.js</title>
+<meta charset="utf-8" />
+</head>
+<body>
+<div id="app">
+    <select v-model="selectedUser">
+        <option v-for="user in users" v-bind:value="user">{{user.name}}</option>
+    </select>
+    <span v-if="selectedUser!==null">Выбрано: {{selectedUser.name}} - {{selectedUser.age}}</span>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            users:[
+                {name:'Tom', age:22},
+                {name:'Bob', age:25},
+                {name:'Sam', age:28},
+                {name:'Alice', age:26}
+            ],
+            selectedUser:null
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Изучаем Vue.js</title>
+<meta charset="utf-8" />
+</head>
+<body>
+<div id="app">
+    <p>{{name}}</p>
+    <p>{{welcome()}}</p>
+    <p>Name: {{displayName()}}</p>
+    <p>Factorial of 6 is equal to {{factorial(6)}}</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data:{name: 'Tom', age:25},
+        methods:{
+            welcome: function(){
+                return "Welcome";
+            },
+            displayName: function() {
+                return this.name;
+            },
+            factorial:function(n){
+                var result=1;
+                for(var i=1; i<=n;i++){
+                    result = result * i;
+                }
+                return result;
+            }
+        }
+    })
+</script>
+</body>
+</html>

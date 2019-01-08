@@ -1,0 +1,23 @@
+<html>
+<head></head>
+<body>
+<div id="app">
+	<input type="text" v-on:input="setMessage" />
+	<p>{{message}}</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    var app = new Vue({
+        el: '#app', //корневой элемент приложения
+        data: { //используемые данные
+            message: 'Hello Vue!'
+        },
+        methods: { //действия, которые выполняются в приложении
+            setMessage: function(event){
+                this.message = event.target.value;
+            }
+        }
+    })
+</script>
+</body>
+</html>

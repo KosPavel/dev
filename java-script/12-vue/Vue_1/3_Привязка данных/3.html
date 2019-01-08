@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Изучаем Vue.js</title>
+<meta charset="utf-8" />
+</head>
+<body>
+<div id="app">
+    <a v-bind:href="link">{{text}}</a>
+	<!-- <a :href="link">{{text}}</a> сокращенная форма -->
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {text: 'Google', link:'https://google.com'}
+    });
+</script>
+</body>
+</html>

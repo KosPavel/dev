@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Изучаем Vue.js</title>
+<meta charset="utf-8" />
+</head>
+<body>
+<div id="app1">
+    <input type="text" v-model="name" />
+    <input type="number" v-model="age" />
+    <p>{{name}} - {{age}}</p>
+</div>
+<div id="app2">
+    <input type="text" v-model="title" />
+    <button v-on:click="onClick">Change</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+	var vm1 = new Vue({
+	    el: '#app1',
+	    data: {name:'Tom', age: 22},
+	    methods: {
+			setName: function(value){
+	            this.name = value;
+	        }
+	    }
+	});
+	// установка свойств объекта Vue в обычном коде JS
+	vm1.name = "Sam";
+	vm1.setName("Mike");
+	// установка свойств объекта Vue в другом объекте Vue
+	var vm2 = new Vue({
+	    el: '#app2',
+	    data: {title:''},
+	    methods: {
+	        onClick: function(){
+	            vm1.setName(this.title);
+	            //vm1.name = this.title;  // или так
+	        }
+	    }
+	});
+
+</script>
+</body>
+</html>

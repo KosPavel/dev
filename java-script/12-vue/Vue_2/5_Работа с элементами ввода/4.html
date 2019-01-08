@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Изучаем Vue.js</title>
+<meta charset="utf-8" />
+</head>
+<body>
+<div id="app">
+    <input type="checkbox" value="Tom" v-model="selectedUsers">
+    <label>Tom</label><br>
+    <input type="checkbox" value="Bob" v-model="selectedUsers">
+    <label>Bob</label><br>
+    <input type="checkbox" value="Sam" v-model="selectedUsers">
+    <label>Sam</label><br>
+    <input type="checkbox" value="Alice" v-model="selectedUsers">
+    <label>Alice</label><br>
+    <span>Выбрано: {{selectedUsers}}</span>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            selectedUsers:[]
+        }
+    });
+</script>
+</body>
+</html>

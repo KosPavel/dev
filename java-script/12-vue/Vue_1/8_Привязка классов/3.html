@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Изучаем Vue.js</title>
+<meta charset="utf-8" />
+<style>
+.region{
+    background-color: #999;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    margin: 10px;
+}
+.yellow{ 
+    background-color: yellow; 
+}
+.red{ 
+    background-color: red; 
+}
+.blue{ 
+    background-color: blue; 
+}
+.green{ 
+    background-color: green; 
+}
+</style>
+</head>
+<body>
+<div id="app">
+    <div class="region" v-bind:class="color"></div>
+    <input type="text" v-model="color" />
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            color: ""
+        }
+    });
+</script>
+</body>
+</html>

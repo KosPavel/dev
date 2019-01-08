@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Изучаем Vue.js</title>
+<meta charset="utf-8" />
+</head>
+<body>
+<div id="app">
+    <div class="region" v-bind:style="{'background-color': color, height: height + 'px', width: width+'px'}"></div>
+    <br><br>
+    <input type="text" v-model="color" />
+    <br><br>
+    <input type="number" v-model="width" />
+    <br><br>
+    <input type="number" v-model="height" />
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            color: 'red',
+            width: 75,
+            height: 75
+        }
+    });
+</script>
+</body>
+</html>

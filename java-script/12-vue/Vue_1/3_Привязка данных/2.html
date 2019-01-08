@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Изучаем Vue.js</title>
+<meta charset="utf-8" />
+</head>
+<body>
+<div id="app">
+    <p>{{age > 25?'Больше 25 лет':'25 лет или меньше' }}</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue">
+</script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {name: 'Tom', age:99}
+    });
+</script>
+</body>
+</html>

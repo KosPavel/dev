@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div id="app">
+		<div class="header">
+		    <h2>ToDoList</h2>
+		    <input v-model="newTask" type="text" placeholder="enter new task"/>
+		    <span v-on:click="addTask" class="btn">add task</span>
+		</div>
+		<ul>
+			<li v-for="task in list" v-on:click="task.isDelete=!task.isDelete" v-bind:class="{checked: task.isDelete}">{{task.name}}</li>
+		</ul>
+		<span v-on:click="removeTasks" class="btn">delete</span>
+	</div>
+	<script src="script.js"></script>
+</body>
+</html> 

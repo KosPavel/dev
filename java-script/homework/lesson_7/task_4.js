@@ -1,6 +1,6 @@
-;window.encodeCes = function() {
-	return {
-		encode : function (str, shift){
+;!function() {
+	
+	function encode(str, shift){
 			str = str.toLowerCase();
 			let alph = "abcdefghijklmnopqrstuvwxyz";
 			let alph_encoded = "";
@@ -12,25 +12,30 @@
 			}
 			encoded = "";
 			for (let i = 0; i < str.length; i++) {
-				try {
-					encoded += alph_encoded.indexOf()
-				}
+				encoded += alph_encoded[alph.indexOf(str[i])];
 			}
 			return encoded;
-        },
+        }
 
-        decode : function (str, shift){
+    function decode(str, shift){
 			str = str.toLowerCase();
-        	let alph = "abcdefghijklmnopqrstuvwxyz";
-        	decoded = "";
-			for (let i = 0; i < str.length; i++){
-				try {
-					decoded += alph[alph.indexOf(str[i]) - shift];
-				} catch(err) {
-					decoded += str[i];
-				}
+			let alph = "abcdefghijklmnopqrstuvwxyz";
+			let alph_decoded = "";
+			for (let i = shift; i < alph.length; i++){
+				alph_decoded += alph[i];
+			}
+			for (let i = 0; i < shift; i++) {
+				alph_decoded += alph[i];
+			}
+			decoded = "";
+			for (let i = 0; i < str.length; i++) {
+				decoded += alph[alph_decoded.indexOf(str[i])];
 			}
 			return decoded;
-        },
-    };
+    	}
+
+    window.caesarLib = {
+    	encode:encode,
+    	decode:decode
+    }
 }();

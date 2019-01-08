@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Изучаем Vue.js</title>
+<meta charset="utf-8" />
+</head>
+<body>
+<div id="app">
+    <input type="number" v-model="number" />
+    <p v-if="number==1">Один</p>
+    <p v-else-if="number==2">Два</p>
+    <p v-else-if="number>2 && number<7">Несколько</p>
+    <p v-else>Много</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            number: 1
+        }
+    });
+</script>
+</body>
+</html>

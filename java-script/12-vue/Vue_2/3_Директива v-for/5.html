@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Изучаем Vue.js</title>
+<meta charset="utf-8" />
+</head>
+<body>
+<div id="app">
+    <ul>
+      <template v-for="user in users">
+        <li>Name: {{user.name}}</li><li>Age: {{user.age}}</li>
+      </template>         
+    </ul>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            users: [
+                    {name:'Tom', age:22}, 
+                    {name:'Bob', age:31}, 
+                    {name: 'Sam', age:28}
+            ]
+        }
+    });
+</script>
+</body>
+</html>

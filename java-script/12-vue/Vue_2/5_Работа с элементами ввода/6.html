@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Изучаем Vue.js</title>
+<meta charset="utf-8" />
+</head>
+<body>
+<div id="app">
+    <input type="radio" value="Tom" v-model="user">
+    <label>Tom</label><br>
+    <input type="radio" value="Bob" v-model="user">
+    <label>Bob</label><br>
+    <input type="radio" value="Sam" v-model="user">
+    <label>Sam</label><br>
+    <span>Выбрано: {{ user }}</span>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            user:''
+        }
+    });
+</script>
+</body>
+</html>
