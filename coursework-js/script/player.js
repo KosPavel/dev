@@ -7,4 +7,8 @@ class Player {
     let perc = 2; //radius in % from map size
     this.radius = (window.innerHeight + window.innerWidth) * perc / (2 * 100);
   }
+
+  move(){
+  	
+  }
 }
