@@ -9,6 +9,8 @@ class Player {
   }
 
   move(){
-  	
+  	document.addEventListener('keydown', function(event) {
+  		
+  	}, false)
   }
 }
