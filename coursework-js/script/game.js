@@ -11,13 +11,15 @@ const LEFT = 65; //a
 const DOWN = 83; //s
 const RIGHT = 68; //d
 const PLAYER_SIZE = 2; //in % from average size of field
-const BULLET_SPEED = 10;
-const MAX_BULLETS = 10;
-var  bulletSize = (window.innerHeight + window.innerWidth) * 0.5 / (2 * 100) //0.5%
-var step = 20;
+var step = 5; //move per tick
+
+//bullet settings
+const BULLET_SPEED = 5;
+const MAX_BULLETS = 3; //no new bullets max on canvas
+const BULLET_SIZE = (window.innerHeight + window.innerWidth) * 0.5 / (2 * 100);
 
 //targets settings
-const MAX_TARGETS = 0;
+const MAX_TARGETS = 3;
 const MIN_TARGET_SPEED = 1;
 const MAX_TARGET_SPEED = 5;
 const MIN_TARGET_SIZE = 2;
@@ -26,7 +28,6 @@ const MAX_TARGET_SIZE = 5;
 let player = {
   x: window.innerWidth/2,
   y: window.innerHeight/2,
-  bullets: [], //[[x0, y0, direction in degrees]]
   radius: (window.innerHeight + window.innerWidth) * PLAYER_SIZE / (2 * 100), //radius is 2 % from average size
   moveListener: function() {
     window.addEventListener('keydown', function(event) {
@@ -56,34 +57,6 @@ let player = {
         };
       };
   }, true);
-  },
-  
-  //to do: MISTAKE HERE
-  shoot: function(startX, startY, endX, endY) {
-    
-    console.log(startX);
-    console.log(startY);
-    console.log(endX);
-    console.log(endY);
-    
-    if (MAX_BULLETS !== player.bullets.length) {
-      let bullet = [];
-      bullet.push(startX);
-      bullet.push(startY);
-      bullet.push(Math.acos(((endX-startX)**2 - (Math.sqrt((endX-startX)**2+(endY-startY)**2))**2 + (endY-startY)**2)/2*(endX-startX)*(endY-startY)));
-      player.bullets.push(bullet);
-      console.log(player.bullets);
-    };  
-  },
-  
-  updateBullets: function() {
-    for (let i in player.bullets) { //updating bullet
-      player.bullets[i][0] += BULLET_SPEED * Math.cos(player.bullets[i][3]);
-      player.bullets[i][1] += BULLET_SPEED * Math.sin(player.bullets[i][3]);
-      if (player.bullets[i][0] >= canvas.width || player.bullets[i][0] <= 0 && player.bullets[i][1] >= canvas.height || player.bullets[i][1] <= 0) {
-        player.bullets.splice(i, 1);
-      };
-    };
   },
 };
 
@@ -124,8 +97,41 @@ let targets = {
   },
 };
 
+let bullets = {
+  x: [],
+  y: [],
+  directions: [],
+  size: BULLET_SIZE,
+  updateBullets: function() {
+    if (bullets.x.length !== 0) {
+      for (let i in bullets.x) {
+        bullets.x[i] += BULLET_SPEED * Math.cos(bullets.directions[i]*Math.PI/180);
+        bullets.y[i] += BULLET_SPEED * Math.sin(bullets.directions[i]*Math.PI/180);
+        //if bullet left canvas - remove
+        if (bullets.x[i] >= canvas.width || bullets.x[i] <= 0 || bullets.y[i] >= canvas.height || bullets.y[i] <= 0) {
+          bullets.x.splice(i, 1);
+          bullets.y.splice(i, 1);
+          bullets.directions.splice(i, 1);
+        };
+      };
+    };
+  },
+  shotListener: function(aim) {
+    if (bullets.x.length !== MAX_BULLETS) {
+      bullets.x.push(player.x);
+      bullets.y.push(player.y);
+      if (player.y <= aim.y) {
+        bullets.directions.push(Math.acos((aim.x-player.x)/Math.sqrt((aim.x-player.x)**2+(aim.y-player.y)**2))*180/Math.PI);
+      } else {
+        bullets.directions.push(360-Math.acos((aim.x-player.x)/Math.sqrt((aim.x-player.x)**2+(aim.y-player.y)**2))*180/Math.PI);
+      }
+    }
+  },
+};
+
 let game = {
   ctx: canvas.getContext('2d'),
+  score: 0,
   random: function(min, max) { //include min, exclude max
     return Math.random() * (max - min) + min;
   },
@@ -133,17 +139,17 @@ let game = {
     player.moveListener();
     game.mouseListener();
   },
-  _getMouseCoords: function(canvas, event) { //for mouse listener
-    var rect = canvas.getBoundingClientRect();
-    return {
+  _getMouseCoords: function(canvas, event) { //get mouse coords {x,y}
+    let rect = canvas.getBoundingClientRect();
+    let aim = {
       x: event.clientX - rect.left,
       y: event.clientY - rect.top,
       };
+    return bullets.shotListener(aim);
   },
   mouseListener: function() {
     window.addEventListener('mousedown', function(event) {
-      let mousePos = game._getMouseCoords(canvas, event);
-      player.shoot(player.x, player.y, mousePos.x, mousePos.y);
+      game._getMouseCoords(canvas, event);
   }, true);
   },
   drawPlayer: function() {
@@ -153,11 +159,11 @@ let game = {
     game.ctx.closePath();
   },
   drawBullets: function() {
-    player.updateBullets();
-    for (let i in player.bullets) {
+    bullets.updateBullets();
+    for (let i in bullets.x) {
       game.ctx.fillStyle = 'red';
       game.ctx.beginPath();
-      game.ctx.arc(player.bullets[i][0], player.bullets[i][1], bulletSize[i], 0, Math.PI*2);
+      game.ctx.arc(bullets.x[i], bullets.y[i], bullets.size, 0, Math.PI*2);
       game.ctx.fill();
       game.ctx.closePath();
     };
@@ -172,12 +178,35 @@ let game = {
       game.ctx.closePath();
     };
   },
+  checkHit: function() {
+    for (let i in targets.coords) {
+      for (let j in bullets.x) {
+        if ((bullets.x[j] <= targets.coords[i][0]+targets.sizes[i]+bullets.size)&&(bullets.x[j] >= targets.coords[i][0]-targets.sizes[i]+bullets.size)&&(bullets.y[j] <= targets.coords[i][1]+targets.sizes[i]+bullets.size)&&(bullets.y[j] >= targets.coords[i][1]-targets.sizes[i]+bullets.size)) {
+          bullets.x.splice(j,1);
+          bullets.y.splice(j,1);
+          bullets.directions.splice(j,1);
+          targets.coords.splice(i,1);
+          targets.sizes.splice(i,1);
+          targets.destinations.splice(i,1);
+          targets.speeds.splice(i,1);
+          game.score += 1;
+        }
+      }
+    }
+  },
+  showScore: function() {
+    game.ctx.font = "48px serif";
+    game.ctx.textBaseline = "hanging";
+    game.ctx.strokeText("your score: " + game.score, 0, 0);
+  },
   drawFrame: function() {
     game.ctx.clearRect(0, 0, canvas.width, canvas.height);
     game.ctx = canvas.getContext('2d');
     game.drawPlayer();
     game.drawBullets();
     game.drawTarget();
+    game.checkHit();
+    game.showScore();
   },
 }
 
