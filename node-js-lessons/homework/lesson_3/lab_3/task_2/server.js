@@ -1,14 +1,16 @@
 const http = require('http');
 const cp = require('child_process');
+
 const child = cp.fork('./child.js');
 
-const server = http.createServer((request, response)=>{
-	response.statusCode = 200;
+http.createServer((req,res)=>{
 	child.send({
-	method:request.method,
-	params:request.url,
-    });
-	response.end();
-}).listen(8080, ()=>{
-	console.log('Server run in 8080 port!');
+		method: req.method,
+		params: req.url
+	});
+
+	res.statusCode=200;
+	res.end();
+}).listen(8080,()=>{
+	console.log('Server is ready on 8080 port!');
 });

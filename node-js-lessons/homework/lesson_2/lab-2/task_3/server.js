@@ -37,8 +37,11 @@ http.createServer((request, response) => {
 		fs.readFile(pathname, 'utf8', (err, data) => {
 		if (err) {
 			console.log("no file for opening\n");
-			response.statusCode = 404;
-			response.end();
+			errPath = 'site/pages/404.html';
+			fs.readFile(errPath, 'utf8', (err, data) => {
+				response.writeHead(200, {'Content-Type': 'text/html'});
+				response.end(data);
+			})
 		} else {
 			console.log(`the file ${pathname} is read and sent to the client\n`);
 			response.writeHead(200, {'Content-Type': mimeTypes[path.extname(pathname)]

@@ -2,9 +2,10 @@ const http = require('http');
 const fs = require('fs');
 
 const lang = process.env["LANG"];
+console.log(lang);
 
 const server = http.createServer(function(req, res){
-	if(lang === 'ru'){
+	if(lang === 'ru_RU' || lang === 'ru'){
 		fs.readFile('ru.html', 'utf8', (err, data)=>{
 			if (err) {
 				console.log('Error file ru.html');
