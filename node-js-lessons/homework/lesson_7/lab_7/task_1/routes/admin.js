@@ -60,4 +60,10 @@ route.post('/out',(req,res,next)=>{
 	res.redirect('/admin');
 });
 
+route.get('/secret', (req, res, next)=>{
+	//Отдаём секретную информацию
+	res.send('Секретная информация');
+});
+
+
 module.exports = route;
