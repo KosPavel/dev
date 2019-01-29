@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo List</title>
+    <link rel="stylesheet" href="style.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div class="header">
+			<h2>Список задач</h2>
+			<input v-model="newTask" type="text" placeholder="Введите задачу"/>
+			<span class="btn" v-on:click="addTask">Добавить</span>
+		</div>
+		<ul>
+			<li v-for="task in list" 
+				v-bind:class="{checked:task.isDelete}"
+				v-on:click="task.isDelete=!task.isDelete">{{task.name}}</li>
+		</ul>
+		<span class="btn" v-on:click="removeTasks">Удалить</span>
+	</div>
+	<script>
+		
+		let vm = new Vue({
+			el:'#app',
+			data:{
+				
+				newTask:'',
+				list:[]
+			},
+			methods:{
+				addTask:function(){
+					let task = {
+						
+						name:this.newTask,
+						isDelete:false
+					}
+					requestToServer.newTask(task,(err,data)=>{
+						if(err) return console.log(err);
+						this.list.push(data);
+						this.newTask = "";
+					});
+				},
+				removeTasks:function(){
+					for(let i = 0; i < this.list.length; i++){
+						if(this.list[i].isDelete)
+							this.list.splice(i, 1);
+					}
+					localStorage.setItem("tasks", JSON.stringify(this.list));
+				},
+				init:function(){
+					let arr = JSON.parse(localStorage.getItem("tasks"));
+					for(var i = 0; i < arr.length; i++){
+						if(arr[i].id > this.counter)
+							this.counter = arr[i].id;
+						this.list.push(arr[i]);
+					}
+				}
+			}
+		});
+		
+		vm.init();
+	</script>
+</body>
+</html>
