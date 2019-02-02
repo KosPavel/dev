@@ -1,0 +1,89 @@
+<html>
+<header>
+	<link rel="stylesheet" 
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="css/prism.css">
+	<script src="js/prism.js"></script>
+</header>
+<body>
+	<div class="row">
+		<div class="col-md-2 d-none d-md-block bg-light">
+			<h1>Log:</h1>
+			<ul id="log" class="nav flex-column"></ul>
+		</div>
+		<div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+			<h1>Code: <span id="filename"></span></h1>
+			<pre id="code" class="line-numbers"></pre>
+		</div>
+	</div>
+	<script>
+		let socket = io.connect(location.origin);
+		
+		socket.on('allLog', (arr)=>{
+			for(let i=0; i<arr.length; i++){
+				newLog(arr[i]);
+			}
+		});
+		
+		socket.on('newLog', (data)=>{
+			newLog(data);
+		});
+		
+		function newLog(data){
+			let str = data.filename.split('\\').join('\\\\');
+			$(`[data-filename="${str}"]`).parent().remove();			
+
+			let date = new Date();			
+			let h = date.getHours().toString();
+			h = (h.length == 2)?h:"0"+h;
+			let m = date.getMinutes().toString();
+			m = (m.length == 2)?m:"0"+m;
+			
+			let li = $('<li class="nav-item">' +
+				'<a class="nav-link" ' + 
+				'style="color:green"' +
+				`data-filename="${data.filename}" href="#">` +
+				data.eventType + ' ' + data.filename + ' ' +
+				h + ":" + m + '</a>'
+				+ '</li>');
+			
+			$('#log').prepend(li);
+		}
+		
+		$('#log').on('click', click_a);
+		
+		function click_a(e){
+			e.preventDefault();
+			if (e.target.tagName === 'A'){
+				let filename = $(e.target).attr('data-filename');
+				$(e.target).css({color:''});
+				socket.emit('getFileContent', filename);			
+			}
+		}
+		
+		socket.on('fileContent', (data)=>{
+			$('#filename').text(data.filename);
+			let code;
+			if (data.extname === ".js" || data.extname === ".json"){
+				$('#code').removeClass("language-css language-markup")
+					.addClass("language-javascript");
+				code = $(`<code class="language-javascript"></code>`);
+			} else if (data.extname === ".css"){
+				$('#code').removeClass("language-javascript language-markup")
+					.addClass("language-css");
+				code = $(`<code class="language-css"></code>`);
+			} else {
+				$('#code').removeClass("language-javascript language-css")
+					.addClass("language-markup");
+				code = $(`<code class="language-markup"></code>`);
+			}
+			code.text(data.fileContent);
+			$("#code").empty();
+			$("#code").append(code);
+			Prism.highlightAll();
+		});
+	</script>
+</body>
+</html>
