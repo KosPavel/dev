@@ -17,6 +17,12 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+    cursor: url('../img/Crosshair.cur'), default;
+}
+
+a {
+	text-decoration: none;
+	cursor: url('../img/Crosshair.cur'), default;
 }
 
 .menuButtons {
