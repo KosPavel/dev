@@ -20,6 +20,15 @@ body {
     cursor: url('../img/Crosshair.cur'), default;
 }
 
+form {
+	display: none;
+}
+
+input {
+	color: green;
+	margin: 10px 0px;
+}
+
 a {
 	text-decoration: none;
 	cursor: url('../img/Crosshair.cur'), default;
@@ -43,4 +52,9 @@ a {
 
 .btn-stats {
 	background-color: rgba(255, 184, 35, 1);
+}
+
+.btn-return {
+	margin: 100px 0px;
+	background-color: green;
 }
