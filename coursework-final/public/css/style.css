@@ -27,11 +27,22 @@ form {
 input {
 	color: green;
 	margin: 10px 0px;
+	height: 50px;
+	width: 250px;
+	font-size: 30px;
+}
+
+.nickname {
+	background-color: rgba(0,0,0,0);
 }
 
 a {
 	text-decoration: none;
 	cursor: url('../img/Crosshair.cur'), default;
+}
+
+canvas {
+	display: none;
 }
 
 .menuButtons {
