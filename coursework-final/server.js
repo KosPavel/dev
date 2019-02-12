@@ -10,24 +10,47 @@ const supp = require('./js/support.js');
 
 app.use(express.static('public'));
 
-let sockets = {};
+let sockets = {}; //ключ = сокет, значение = объект -> nick = имя
+let players = {}; //ник = {}, внутри все данные для отправки
 let maxPlayers = 2;
 
 io.on('connection', function (socket) {
-	socket.on('first_connection', (data)=>{
-		let isEnough = supp.isEnoughPlayers(sockets, maxPlayers);
-		if (isEnough) {
-			sockets[socket.id] = socket;
-			sockets[socket.id].nick = data.nick;
-			console.log(`server: new user '${data.nick}' connected`);
-		} else {
-			socket.disconnect();
-			console.log('server: no more users is possible to join');
-		}
-	});
+	if (io.engine.clientsCount > maxPlayers) {
+    	socket.emit('err', { message: 'limit of players has been reached, try again later!' })
+    	socket.disconnect()
+    	console.log('Disconnected...')
+    	return
+    }
+
+    socket.on('first_connection', (data)=>{
+    	sockets[socket.id] = socket;
+        sockets[socket.id].nick = data.nick;
+    	players[data.nick] = {};
+    	console.log(`server: user '${sockets[socket.id].nick}' connected`);
+        if (Object.keys(players).length === 1) {
+            players[data.nick].x = 30;
+            players[data.nick].y = 30;
+        } else {
+            players[data.nick].x = 970;
+            players[data.nick].y = 710;
+        }
+        console.log(players);
+        setInterval(newTick, 1000);
+
+        function newTick(){
+            io.sockets.emit('new_tick', players);
+        }
+    });
+
+    socket.on('new_move', (data)=>{
+        //!!!!!!!!! to do: movement speed. not teleportation
+        players[sockets[socket.id].nick].x = data.x;
+        players[sockets[socket.id].nick].y = data.y;
+    });
 
 	socket.on('disconnect', ()=>{
 		console.log(`server: user '${sockets[socket.id].nick}' disconnected`);
+        delete players[sockets[socket.id].nick];
 		delete sockets[socket.id];
 	});
 });
