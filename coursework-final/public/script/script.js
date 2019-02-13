@@ -48,7 +48,14 @@ function startGame() {
 	});
 
 	window.addEventListener('mousedown', (e)=>{
-		getMouseCoords(canvas, e);
+		let point = getMouseCoords(canvas, e);
+		socket.emit('new_shot', point);
+	}, true)
+
+	window.addEventListener('contextmenu', (e)=>{
+		e.preventDefault();
+		let point = getMouseCoords(canvas, e);
+		socket.emit('new_move', point);
 	}, true)
 
 	function getMouseCoords(canvas, event) { //get mouse coords {x,y}
@@ -57,7 +64,7 @@ function startGame() {
      		x: event.clientX - rect.left,
       		y: event.clientY - rect.top,
       	};
-      	socket.emit('new_move', point);
+      	return point;
 	}
 }
 
