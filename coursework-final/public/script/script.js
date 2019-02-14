@@ -47,16 +47,16 @@ function startGame() {
 		drawTick(data); //json with players and bullets coords
 	});
 
-	window.addEventListener('mousedown', (e)=>{
+	window.addEventListener('click', (e)=>{
 		let point = getMouseCoords(canvas, e);
-		socket.emit('new_shot', point);
-	}, true)
+		socket.emit('shot', point);
+	}, false)
 
 	window.addEventListener('contextmenu', (e)=>{
 		e.preventDefault();
 		let point = getMouseCoords(canvas, e);
-		socket.emit('new_move', point);
-	}, true)
+		socket.emit('move', point);
+	}, false)
 
 	function getMouseCoords(canvas, event) { //get mouse coords {x,y}
     	let rect = canvas.getBoundingClientRect();
@@ -72,6 +72,7 @@ function drawTick(obj) {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx = canvas.getContext('2d');
     drawPlayers(obj);
+    drawBullets(obj);
 }
 
 function drawPlayers(obj) {
@@ -86,5 +87,28 @@ function drawPlayers(obj) {
 		ctx.arc(obj[players[i]].x, obj[players[i]].y, 20, 0, Math.PI*2);
       	ctx.fill();
    		ctx.closePath();
+	}
+}
+
+function drawBullets(obj) {
+	let players = Object.keys(obj);
+	for (let i in players) {
+		// if (players[i] == nick) {
+		// 	ctx.fillStyle = 'green';
+		// } else {
+		// 	ctx.fillStyle = 'red';
+		// }
+		// console.log(obj[players[i]].bullets);
+		for (let j in obj[players[i]].bullets) {
+			if (players[i] == nick) {
+				ctx.fillStyle = 'green';
+			} else {
+				ctx.fillStyle = 'red';
+			}
+			ctx.beginPath();
+			ctx.arc(obj[players[i]].bullets[j][0], obj[players[i]].bullets[j][1], 5, 0, Math.PI*2);
+      		ctx.fill();
+   			ctx.closePath();
+   		}
 	}
 }
