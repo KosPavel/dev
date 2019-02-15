@@ -12,10 +12,11 @@ app.use(express.static('public'));
 
 let sockets = {}; //ключ = сокет, значение = объект -> nick = имя
 let players = {}; //ник = {}, внутри все данные для отправки
-let maxPlayers = 2;
+let maxPlayers = 2; // 1..4 is allowed
+const LIVES = 3;
 const PLAYER_SPEED = 4;
 const BULLET_SPEED = 7;
-const MAX_BULLETS = 3;
+const MAX_BULLETS = 1;
 const FPS = 60;
 
 io.on('connection', function (socket) {
@@ -36,11 +37,25 @@ io.on('connection', function (socket) {
             players[data.nick].y = 30;
             players[data.nick].bullets = [];
             players[data.nick].bulletsDir = [];
-        } else {
+            players[data.nick].lives = LIVES;
+        } else if (Object.keys(players).length === 2) {
             players[data.nick].x = 970;
             players[data.nick].y = 710;
             players[data.nick].bullets = [];
             players[data.nick].bulletsDir = [];
+            players[data.nick].lives = LIVES;
+        } else if (Object.keys(players).length === 3) {
+            players[data.nick].x = 30;
+            players[data.nick].y = 710;
+            players[data.nick].bullets = [];
+            players[data.nick].bulletsDir = [];
+            players[data.nick].lives = LIVES;
+        } else if (Object.keys(players).length === 4) {
+            players[data.nick].x = 970;
+            players[data.nick].y = 30;
+            players[data.nick].bullets = [];
+            players[data.nick].bulletsDir = [];
+            players[data.nick].lives = LIVES;
         }
         // console.log(players);
         setInterval(newTick, 1000/FPS);
@@ -48,6 +63,7 @@ io.on('connection', function (socket) {
         function newTick(){
             updateBullets();
             updatePlayers();
+            checkHit();
             io.sockets.emit('new_tick', players);
         }
 
@@ -90,6 +106,23 @@ io.on('connection', function (socket) {
                 }
             }
         }
+
+        function checkHit(){
+        	let playersList = Object.keys(players);
+        	for (let i in playersList) {
+        		for (let j in players[playersList[i]].bullets) {
+        			for (let k in playersList) {
+        				if (i !== k) {
+        					if (Math.abs(players[playersList[i]].bullets[j][0] - players[playersList[k]].x) < 20 && Math.abs(players[playersList[i]].bullets[j][1] - players[playersList[k]].y) < 20) {
+        						players[playersList[i]].bullets.splice(j, 1);
+                        		players[Object.keys(players)[i]].bulletsDir.splice(j,1);
+        						players[playersList[k]].lives -= 1;
+        					}
+        				}
+        			}
+        		}
+        	}
+        }
     });
 
     socket.on('move', (data)=>{
@@ -106,36 +139,12 @@ io.on('connection', function (socket) {
     });
 
 	socket.on('disconnect', ()=>{
-		console.log(`server: user '${sockets[socket.id].nick}' disconnected`);
-        delete players[sockets[socket.id].nick];
-		delete sockets[socket.id];
+		try {
+			console.log(`server: user '${sockets[socket.id].nick}' disconnected`);
+        	delete players[sockets[socket.id].nick];
+			delete sockets[socket.id];
+		} catch (err) {
+			console.log('user tried to skip nickname');
+		}
 	});
 });
-
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// io.on('connection', function (socket) {
-// 	sockets[socket.id] = socket;
-// 	console.log('Новый пользователь id:' + socket.id);
-// 	for(let id in sockets){
-// 		if (id !== socket.id)
-// 			sockets[id].emit('new_user', '(new user connected)');
-// 	}
-
-// 	socket.on('from_client', (data)=>{
-
-// 		for (let id in sockets){
-// 			if (id !== socket.id){
-// 				sockets[id].emit('from_server', {
-// 					name: data.name,
-// 					message: data.message
-// 				});
-// 			}
-// 		}
-// 	});
-
-// 	socket.on('disconnect', ()=>{
-// 		for(let id in sockets){
-// 		sockets[id].emit('user_left', '(user disconnected)');
-// 	}
-// 	});
-// });

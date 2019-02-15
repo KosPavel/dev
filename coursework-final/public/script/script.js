@@ -45,6 +45,7 @@ function startGame() {
 
 	socket.on('new_tick', (data)=>{
 		drawTick(data); //json with players and bullets coords
+		checkAlive(data);
 	});
 
 	window.addEventListener('click', (e)=>{
@@ -57,6 +58,18 @@ function startGame() {
 		let point = getMouseCoords(canvas, e);
 		socket.emit('move', point);
 	}, false)
+
+	function checkAlive(obj) {
+		try {
+			if (obj[nick].lives <= 0) {
+				socket.disconnect();
+				canvas.style.display = 'none';
+				h1.innerHTML = `You lost!`;
+			}
+		} catch (err) {
+			console.log('smth goes wrong');
+		}
+	}
 
 	function getMouseCoords(canvas, event) { //get mouse coords {x,y}
     	let rect = canvas.getBoundingClientRect();
@@ -73,6 +86,7 @@ function drawTick(obj) {
     ctx = canvas.getContext('2d');
     drawPlayers(obj);
     drawBullets(obj);
+    showScore(obj);
 }
 
 function drawPlayers(obj) {
@@ -93,12 +107,6 @@ function drawPlayers(obj) {
 function drawBullets(obj) {
 	let players = Object.keys(obj);
 	for (let i in players) {
-		// if (players[i] == nick) {
-		// 	ctx.fillStyle = 'green';
-		// } else {
-		// 	ctx.fillStyle = 'red';
-		// }
-		// console.log(obj[players[i]].bullets);
 		for (let j in obj[players[i]].bullets) {
 			if (players[i] == nick) {
 				ctx.fillStyle = 'green';
@@ -110,5 +118,15 @@ function drawBullets(obj) {
       		ctx.fill();
    			ctx.closePath();
    		}
+	}
+}
+
+function showScore(obj) {
+	let place = [[10,10],[680,10],[10,710],[680,710]];
+	ctx.font = "40px serif";
+    ctx.textBaseline = "hanging";
+	let players = Object.keys(obj);
+	for (let i in players) {
+    	ctx.strokeText(players[i] + "'s lives: " + obj[players[i]].lives, place[i][0], place[i][1]);
 	}
 }
