@@ -48,6 +48,10 @@ function startGame() {
 		checkAlive(data);
 	});
 
+	socket.on('new_heal', (data)=>{
+		drawHeal(data);
+	})
+
 	window.addEventListener('click', (e)=>{
 		let point = getMouseCoords(canvas, e);
 		socket.emit('shot', point);
@@ -102,6 +106,14 @@ function drawPlayers(obj) {
       	ctx.fill();
    		ctx.closePath();
 	}
+}
+
+function drawHeal(obj) {
+	ctx.fillStyle = 'blue';
+	ctx.beginPath();
+	ctx.arc(obj.x, obj.y, 10, 0, Math.PI*2);
+    ctx.fill();
+    ctx.closePath();
 }
 
 function drawBullets(obj) {

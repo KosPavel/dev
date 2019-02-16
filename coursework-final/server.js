@@ -12,6 +12,7 @@ app.use(express.static('public'));
 
 let sockets = {}; //ключ = сокет, значение = объект -> nick = имя
 let players = {}; //ник = {}, внутри все данные для отправки
+let heal = {x:0,y:0};
 let maxPlayers = 2; // 1..4 is allowed
 const LIVES = 3;
 const PLAYER_SPEED = 4;
@@ -65,6 +66,9 @@ io.on('connection', function (socket) {
             updatePlayers();
             checkHit();
             io.sockets.emit('new_tick', players);
+            updateHeal();
+            checkHeal();
+            io.sockets.emit('new_heal', heal);
         }
 
         function updatePlayers(){//новые координаты игроков
@@ -103,6 +107,23 @@ io.on('connection', function (socket) {
                         players[Object.keys(players)[i]].bullets.splice(j,1);
                         players[Object.keys(players)[i]].bulletsDir.splice(j,1);
                     }
+                }
+            }
+        }
+
+        function updateHeal(){
+            if (heal.x === 0) {
+                heal.x = Math.floor(Math.random()*(950-10+1)+10);
+                heal.y = Math.floor(Math.random()*(750-10+1)+10);
+            }
+        }
+
+        function checkHeal(){
+            for (let i in Object.keys(players)) {
+                if (Math.abs(players[Object.keys(players)[i]].x - heal.x) <= 10 && Math.abs(players[Object.keys(players)[i]].y - heal.y) <= 10) {
+                    heal.x = 0;
+                    heal.y = 0;
+                    players[Object.keys(players)[i]].lives += 1;
                 }
             }
         }
